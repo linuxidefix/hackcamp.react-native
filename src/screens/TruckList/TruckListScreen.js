@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
 
 const filtring = {
   [filters.NONE]: (trucks) => trucks,
-  [filters.ACTIVE]: (trucks) => trucks.filter(truck => !truck.active),
-  [filters.INACTIVE]: (trucks) => trucks.filter(truck => truck.active),
+  [filters.ACTIVE]: (trucks) => trucks.filter(truck => truck.active),
+  [filters.INACTIVE]: (trucks) => trucks.filter(truck => !truck.active),
 };
 
 export const TruckListScreen = ({appTitle, trucks, switchScreens, filter, setFilter, toggleTruck}) => {
@@ -41,6 +41,7 @@ export const TruckListScreen = ({appTitle, trucks, switchScreens, filter, setFil
       <Header
         trucks={trucks}
         filter={filter}
+        setFilter={setFilter}
       />
       <View style={{flex:7.5}}>
         <ListView

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {TruckListScreen} from './screens/TruckList/TruckListScreen';
 import {globalStyles} from './styles/globalStyles';
 import {TruckFormScreen} from './screens/TruckForm/TruckFormScreen';
@@ -43,22 +43,37 @@ export class Main extends Component{
   addTruck(truck) {
     // This function is used to add a truck to the state.
     // Note that it uses setState instead of directly modifying this.state.trucks
-    this.setState({trucks: [truck]});
+    //this.setState({trucks: [truck]});
+    this.setState({trucks: [
+      ...this.state.trucks,
+      truck
+    ]});
+
   };
 
   render() {
     return (
-      <View style={globalStyles.container}>
-        {this.state.isOnList ?
-          <TruckListScreen
-            appTitle={appInfos.appTitle}
-            switchScreens={this.switchScreens}
-          />
-          :
-          <TruckFormScreen
-            switchScreens={this.switchScreens}
-          />
-        }
+      <View>
+
+
+
+      {this.state.isOnList ?
+        <TruckListScreen
+          appTitle={appInfos.appTitle}
+          switchScreens={this.switchScreens}
+          trucks={this.state.trucks}
+          filter={this.state.filter}
+          setFilter={this.setFilter}
+          toggleTruck={this.toggleTruck}
+        />
+        :
+        <TruckFormScreen
+          switchScreens={this.switchScreens}
+         addTruck={this.addTruck.bind(this)}
+
+        />
+      }
+
       </View>
     );
   }

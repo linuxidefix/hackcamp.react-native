@@ -4,13 +4,13 @@ import {palette} from '../../constants/colors';
 import {globalStyles} from '../../styles/globalStyles';
 import {HeaderWidget} from './HeaderWidget';
 
-export const Header = ({title, filter, setFilter, trucks,}) =>  {
+export const Header = ({title, filter, setFilter, trucks}) =>  {
   return (
     <View style={styles.container}>
       <Text style={globalStyles.title}>{title}</Text>
       <HeaderWidget
-        trucks={filter}
-        filter={trucks}
+        trucks={trucks}
+        filter={filter}
         setFilter={setFilter}
       />
     </View>
